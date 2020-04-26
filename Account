@@ -1,0 +1,87 @@
+/* This class is information on the Accounts with an enumerated data type for each account type
+ * accounts are already set up with initial amounts that are validated.
+ * In the main method, the account numbers and associated pins are matched.*/
+
+public class Account {
+
+	public enum AccountType {CHECKING, SAVINGS}
+	
+	public AccountType actType;
+	
+	private double savingsBalance;
+	
+	private double checkingBalance;
+	
+	private int [] validNum = {12345, 23456, 34567, 45678, 56789};
+	
+	private int accountNum;
+
+	
+
+//boolean to search for existing accountNum
+	
+	public static boolean isValid(int number)
+	{
+		int [] validNum = {12345, 23456, 34567, 45678, 56789};
+		boolean found = false;
+		int index = 0;
+		
+		while (!found && index < validNum.length) {
+			if(validNum[index]==number)
+				found = true;
+			else
+				index++; 
+		}
+		return found;
+	}//end validation	
+	
+	
+public Account() {
+	savingsBalance = 0.0;
+	checkingBalance = 0.0;
+	
+		}
+	
+		
+	
+//Constructor
+	public Account(AccountType actType, double savingsBalance,  double checkingBalance, int accountNum) {
+		this.actType = actType;
+		this.savingsBalance = savingsBalance;
+		this.checkingBalance = checkingBalance;
+		this.accountNum = accountNum;
+		
+	}
+
+ public void deposit(double amount) {
+	 if(this.actType == AccountType.CHECKING) {
+		 checkingBalance += amount;
+	 }
+	 else
+		 savingsBalance += amount;
+ }
+	
+ public void withdraw(double amount) {
+	 if(this.actType == AccountType.CHECKING) {
+		 checkingBalance -= amount;
+	 }
+	 else
+		 savingsBalance -= amount;
+ }
+ 
+//for checking the balance
+	public double getSavingsBalance() {
+		return savingsBalance;
+	}
+
+
+	public double getCheckingBalance() {
+		return checkingBalance;
+	}
+
+
+	public static int[] getValidNum() {
+		int [] validNum = {12345, 23456, 34567, 45678, 56789};
+		return validNum;
+	}
+}
