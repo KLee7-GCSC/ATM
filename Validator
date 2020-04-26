@@ -1,0 +1,39 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Validator {
+	
+	
+	
+	public static int accValid(){
+		Scanner keyboard = new Scanner (System.in);	//Create Scanner object
+		System.out.println("Please enter your account number: ");
+		int accountNumber = keyboard.nextInt();
+		
+		
+		//checking for correct account number
+		while (!Account.isValid(accountNumber)){
+			System.out.println("That is not a valid account. Please try again");
+			System.out.println("Please enter your account number: ");
+			accountNumber = keyboard.nextInt();							
+		}
+		System.out.println("Your account has been confirmed. Please enter your pin associated with your account");
+		return accountNumber;
+	}
+	
+	public static int accPin(int accountNumber) {
+		Scanner keyboard = new Scanner (System.in);	//Create Scanner object
+		int pin = keyboard.nextInt();
+		
+		int index = Arrays.binarySearch(Account.getValidNum(),accountNumber);
+		
+		while(pin != Customer.getValidPin()[index]) {
+			System.out.println("That is not a valid pin. Please try again");
+			System.out.println("Please enter your pin number: ");
+			pin = keyboard.nextInt();
+		}	
+		return pin;
+	}
+}
+
+
