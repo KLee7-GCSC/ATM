@@ -1,0 +1,39 @@
+/*This class list account infomation that the customer has.
+ * The pin number array is already set and is validated, then is compared to the account array within the main method */
+import java.util.List;
+
+public class Customer {
+  
+	private Account account;	//the account
+	
+	private int [] validPin = {123, 234, 345, 456, 567};		//pin number of account
+	
+	private int pinNum;
+	
+	
+//Constructor initializing the Customer
+	public Customer  (Account account, int pinNum) {
+		this.pinNum = pinNum;	
+	}// end constructor
+	
+	private void validPinNum (int pinNum){
+		for (int index = 0; index < 5; index ++ ) {
+			if (validPin[index] == pinNum) {
+				
+			}
+			else {
+				System.out.println("Invalid Pin. Goodbye.");
+			
+			}
+		}
+	}
+	
+//getter
+	public static int[] getValidPin() {
+		int [] validPin = {123, 234, 345, 456, 567};
+		return validPin;
+	}
+
+
+	
+}//end Customer class
